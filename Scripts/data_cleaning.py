@@ -30,15 +30,19 @@ if not os.path.exists("Clean_data"):
     os.makedirs("Clean_data")
 
 # Fonction pour nettoyer et préparer les données
+# Fonction pour nettoyer et préparer les données
 def nettoyer_donnees(df, nom_fichier):
     # Copie du dataframe pour éviter de modifier l'original
     df_clean = df.copy()
     
     # 1. Convertir les colonnes de pourcentage (comme CTR)
     if 'CTR' in df_clean.columns:
-        # Enlever le symbole % et convertir en float
-        df_clean['CTR'] = df_clean['CTR'].astype(str).str.replace('%', '').astype(float)
+        # Enlever le symbole % et convertir en float avec 4 décimales
+        df_clean['CTR'] = df_clean['CTR'].astype(str).str.replace('%', '').astype(float) / 100
+        # Arrondir à 4 décimales
+        df_clean['CTR'] = df_clean['CTR'].round(4)
     
+    # Reste de la fonction inchangé...
     # 2. Standardiser les formats de date si nécessaire
     if 'Date' in df_clean.columns:
         try:
