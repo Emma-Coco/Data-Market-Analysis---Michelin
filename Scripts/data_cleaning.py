@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import re
 
+
 # Chemin vers le dossier contenant les données brutes
 chemin_donnees_brutes = "raw_data"
 
@@ -46,9 +47,9 @@ def nettoyer_donnees(df, nom_fichier):
     # 2. Standardiser les formats de date si nécessaire
     if 'Date' in df_clean.columns:
         try:
+            # Convertir en datetime
             df_clean['Date'] = pd.to_datetime(df_clean['Date'], errors='coerce')
         except:
-            # Si la conversion échoue, garder la colonne telle quelle
             print(f"Impossible de convertir les dates dans {nom_fichier}")
     
     # 3. Standardiser les noms de colonnes (supprimer les espaces, accents, etc.)
@@ -113,12 +114,11 @@ for fichier in fichiers:
         nom_base = os.path.splitext(fichier)[0]  # Nom sans extension
         nom_excel = re.sub(r'[^\w\-_\.]', '_', nom_base) + "_all.xlsx"
         
-        # Sauvegarder en Excel
+        # Sauvegarder en Excel avec format de date spécifié
         chemin_sortie = os.path.join("Clean_data", nom_excel)
-        df_consolide.to_excel(chemin_sortie, index=False, engine='openpyxl')
+        with pd.ExcelWriter(chemin_sortie, engine='openpyxl', datetime_format='YYYY-MM-DD') as writer:
+            df_consolide.to_excel(writer, index=False)
         
         print(f"Fichier Excel consolidé et nettoyé créé: {chemin_sortie}")
-    else:
-        print(f"Aucune donnée trouvée pour {fichier}")
 
 print("Consolidation et nettoyage terminés!")
