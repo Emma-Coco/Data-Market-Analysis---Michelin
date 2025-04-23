@@ -13,6 +13,23 @@ def set_page_style():
             --michelin-dark-gray: #e0e0e0;
         }
         
+        /* Ciblage direct du texte des onglets */
+        .stTabs [data-baseweb="tab"] p, 
+        .stTabs [data-baseweb="tab"] .st-emotion-cache-1jmvea6 p,
+        .stTabs [data-baseweb="tab"] [class*="st-emotion-cache"] p {
+            font-size: 16px !important;
+            word-break: break-word;
+            margin-bottom: 0px;
+        }
+        
+        /* Ciblage direct du texte de l'onglet actif */
+        .stTabs [aria-selected="true"] p,
+        .stTabs [aria-selected="true"] .st-emotion-cache-1jmvea6 p,
+        .stTabs [aria-selected="true"] [class*="st-emotion-cache"] p {
+            font-size: 17px !important;
+            font-weight: 600 !important;
+        }
+        
         /* Réduire l'espace entre le header et le contenu */
         .block-container {
             padding-top: 1rem !important;
@@ -36,7 +53,7 @@ def set_page_style():
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 40, 85, 0.12);
-            margin: 1rem 0 2rem 0; /* Réduit la marge du haut */
+            margin: 1rem 0 2rem 0;
             overflow: hidden;
             border: 1px solid #e0e0e0;
         }
