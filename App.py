@@ -1,41 +1,40 @@
 import streamlit as st
+from Utils.styles import set_page_style
+from Utils.header import display_header
+from Utils.footer import display_footer
+from Tabs import about, recommendations, devices, dates, appearance, global_analysis
 
 # Configuration de la page
-st.set_page_config(
-    page_title="Michelin SEO Dashboard - Mexico",
-    page_icon="🔍",
-    layout="wide"
-)
+st.set_page_config(page_title="Michelin SEO Dashboard - Mexico", page_icon="🔍", layout="wide")
 
-# Titre et introduction
-st.title("Michelin SEO Dashboard - Marché Mexicain")
-st.markdown("### Analyse des données search pour le marché sud-américain")
+# Application du style personnalisé
+set_page_style()
 
-# Description du projet
-st.write("""
-Cette application vous permet d'explorer et d'analyser les performances SEO de Michelin sur le marché mexicain.
-Utilisez le menu de navigation pour accéder aux différentes analyses.
-""")
+# Affichage du logo en haut
+display_header()
 
-# Information sur les données
-st.subheader("Sources de données")
-st.write("""
-Les données analysées proviennent de 5 sources principales:
-- Manufacturer URLs
-- Electric URLs
-- Electric KWD (Keywords)
-- Tesla KWD (Keywords)
-- Global
-""")
+# Titre et sous-titre sous le logo
+st.title("SEO Dashboard - Marché Mexicain")
+st.markdown("### Analyse des données search pour le marché sud-américain du 06/11/2024 au 05/02/2025")
 
-# Ajouter une section "Comment utiliser"
-st.subheader("Comment utiliser ce dashboard")
-st.write("""
-1. Naviguez entre les différentes pages d'analyse via le menu latéral
-2. Utilisez les filtres disponibles pour affiner les visualisations
-3. Explorez les tendances et insights pour chaque segment
-""")
+# Création des onglets
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    "À propos", "Recommandations", "Appareils", "Dates", "Apparence", "Analyse Globale"
+])
 
-# Pied de page
-st.markdown("---")
-st.markdown("*Dashboard développé dans le cadre du projet Data Market Analysis - 2025*")
+# Affichage du contenu dans chaque onglet
+with tab1:
+    about.show()
+# with tab2:
+#     recommendations.show()
+# with tab3:
+#     devices.show()
+# with tab4:
+#     dates.show()
+# with tab5:
+#     appearance.show()
+# with tab6:
+#     global_analysis.show()
+
+# Affichage du pied de page
+display_footer()
