@@ -1,4 +1,3 @@
-# Fichier: Tabs/devices.py
 import streamlit as st
 import pandas as pd
 import os
@@ -8,7 +7,7 @@ def show():
     st.header("Analyse par Appareils")
 
     st.markdown("""
-        Appareils utilisés lors de la navigation pour la récolte des données SEO.        
+        ##### Appareils utilisés lors de la navigation pour la récolte des données SEO.        
         """)
     
     col1, col2 = st.columns([5, 5])  # Ratio 5/4
@@ -116,8 +115,7 @@ def show():
     
     with col2:
         st.markdown("""
-                    
-
+                       
         Contre toute attente, c'est *Electric URl* qui détient le meilleur taux CTR pour tous les appareils, mais principalement pour la **tablette**. Or, la tablette était en dernière position pour les impressions et les clics. 
                     
         """)
@@ -128,31 +126,43 @@ def show():
     
     with col1:
         st.markdown("""
-        ### Analyse
         
-        - Meilleure position = meilleur CTR
-        - Mobile bien positionné
-        - Corrélation position/conversion
+        Ici, les résultats nous laissent à penser qu'une meilleure ***position*** impliquerait de meilleurs ***résultats CTR***, puisqu'on voit qu'une position faible (donc bonne) mène à un CTR élevé et inversement. 
+        
+        Les résultats sur **tablette** sont extrêmement bien positionnés (5.6 en moyenne) - pour Electric URL notamment comme on l'a vu, ainsi que pour ELectric KWD, Tesla KWD et finalement, Manufacturer URL, mais toujours pour une ***fiabilité moyenne à faible***. 
+                    
+        Ainsi, il semble que le nombre d'impressions par source n'ait pas de lien avec la position sur l'appareil, et que la position pourrait potentiellement influer sur le CTR - sans qu'il n'y ait toutefois un nombre considérable d'utilisateurs touchés
         """)
     
     with col2:
         st.image("Assets/position_ctr_par_appareil.png", use_column_width=True)
     
     # Section de recommandations plus concise
-    st.subheader("Recommandations")
+    st.subheader("Résumé des observations")
     
     col1, col2 = st.columns(2)
     
     with col1:
+        
         st.markdown("""
-        - **Prioritiser l'expérience mobile** (65% du trafic)
-        - **Optimiser le contenu desktop** (35% du trafic)
-        - **Limiter les investissements tablette** (2% seulement)
+                         
+        - **Si l'objectif est de donner de la visibilité** : favoriser les sources telles que  pour *Manufacturer URL* sur mobile - beaucoup de visibilité mais peur d' "engagement" (CTR)
+
+        - **Si l'objectif est de créer de l'engagement** (conversion - avec ici pour seul indice le CTR) : favoriser les sources telles que pour *Electric URL* et développer le potentiel sur **tablette**
+                    
+        - Les sources/appareils avec le plus grand **CTR** sont aussi celles avec la **fiabilité** la plus faible (nombre de sujets touchés très restreint)
+        
         """)
     
     with col2:
         st.markdown("""
-        - **Stratégie différenciée par source**
-        - **Focus sur les URLs fabricants**
-        - **Améliorer les positions pour les requêtes électriques**
+      
+        - Une meilleure **visibilité (impressions)** amène plus de **clics** mais ne fait pas augmenter le **CTR** 
+        
+        - Donc même en améliorant la position, il faut qu'elle touche **LA BONNE CIBLE** pour faire grimper le CTR
+
+        - **La tablette** illustre parfaitemet l'exemple d'une haute efficacité malgré un faible volume
+                    
+        - Les **URL** montrent ici de meilleures performances générales, quand les données sont groupées selon les appareils
+                    
         """)

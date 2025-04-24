@@ -22,15 +22,15 @@ st.markdown("### Analyse des données search pour le marché sud-américain pour
 display_lexicon()
 
 # Création des onglets dans le nouvel ordre
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs([
-    "À propos", "Général", "Appareils", "Apparence", "Dates", "Filtres", "Pages", "Pays", "Requêtes"
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10 = st.tabs([
+    "À propos", "Général", "Appareils", "Apparence", "Dates", "Filtres", "Pages", "Pays", "Requêtes", "Recommendations"
 ])
 
 # Affichage du contenu dans chaque onglet
 with tab1:
     about.show()
 with tab2:
-    global_analysis.show()  # Renommé de "Analyse Globale" à "Général"
+    global_analysis.show()
 with tab3:
     devices.show()
 with tab4:
@@ -38,13 +38,15 @@ with tab4:
 with tab5:
     dates.show()
 with tab6:
-    filters.show()  # Nouvel onglet
+    filters.show() 
 with tab7:
-    pages.show()    # Nouvel onglet
+    pages.show()  
 with tab8:
-    countries.show()  # Nouvel onglet
+    countries.show() 
 with tab9:
-    queries.show()  # Nouvel onglet
+    queries.show() 
+with tab10:
+    recommendations.show() 
 
 # Affichage du pied de page
 display_footer()
