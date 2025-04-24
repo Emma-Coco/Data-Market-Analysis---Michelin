@@ -15,8 +15,16 @@ def show():
     - Electric KWD (Keywords)
     - Tesla KWD (Keywords)
     - Global
+             
+    **Catégories:**
+    - Général : Résultats sur une large quantité de données issues du site général, et pas pas spécifiquement des sources ciblées citées ci-dessus
+    - Appareils : Types d'appareil utilisé (ordinateur, tablette, téléphonne)
+    - Apparence dans les résultats de recherche : Différentes façons dont les pages peuvent être présentées aux utilisateurs (extraits de produits, extraits d'avis, résultats de traduction, vidéo)
+    - Dates : Tendances en fonction des jours/semaines/mois sur une période d'étalant du 06/11/2024 au 05/02/2025
+    - Filtres : 
+    - Pages : 
+    - Pays : 
+    - Requêtes : 
     
-    **Comment utiliser ce dashboard:**
-    1. Naviguez entre les différents onglets d'analyse
-    2. Explorez les tendances et insights pour chaque segment
+    **Naviguez entre les différents onglets d'analyse et explorez les tendances et insights pour chaque catégories.**
     """)
