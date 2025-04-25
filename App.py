@@ -12,7 +12,7 @@ st.set_page_config(page_title="Michelin SEO Dashboard - Mexico", page_icon="🔍
 set_page_style()
 
 # Affichage du logo en haut
-display_header()
+#display_header()
 
 # Titre et sous-titre sous le logo
 st.title("SEO Dashboard - Marché Mexicain")
