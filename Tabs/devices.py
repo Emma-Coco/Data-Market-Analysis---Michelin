@@ -18,7 +18,7 @@ def show():
                     
         Les valeurs maximales de Clics, Impressions et CTR sont surlignées en jaune, et les meilleures positions (les plus basses) sont surlignées en vert.
 
-        Les données brutes mettent déjà en évidence que les clics et les impressions sont plus nombreux sur **mobile** pour *manufacturer url*.
+        Les données brutes mettent déjà en évidence que les clics et les impressions sont plus nombreux sur **mobile** pour *Manufacturer URL*.
 
         Cependant, le CTR et la position semblent bien meilleurs sur **Tablette** pour *Electric URL*, avec toute fois une fiabilité (basée sur le nombre d'impressions) moyenne.           
         """)
@@ -75,6 +75,8 @@ def show():
         **Electric KWD:**
                     
         2.13% des impressions
+                    
+        Suivi par l'**ordinateur** et en dernier lieu, par la **tablette**.
         """)
     
     # Graphique des clics (texte à gauche, image à droite)
@@ -146,23 +148,28 @@ def show():
         
         st.markdown("""
                          
-        - **Si l'objectif est de donner de la visibilité** : favoriser les sources telles que  pour *Manufacturer URL* sur mobile - beaucoup de visibilité mais peur d' "engagement" (CTR)
+        - **Si l'objectif est de donner de la visibilité** : favoriser les sources telles que  pour *Manufacturer URL* sur **mobile**
 
-        - **Si l'objectif est de créer de l'engagement** (conversion - avec ici pour seul indice le CTR) : favoriser les sources telles que pour *Electric URL* et développer le potentiel sur **tablette**
+        - **Si l'objectif est de créer de l'engagement** (conversion - avec ici pour seul indice le CTR) : favoriser les sources telles que pour *Electric URL* et développer le potentiel sur **tablette** qui montre un engagement exceptionnel malgré un faible volume
                     
-        - Les sources/appareils avec le plus grand **CTR** sont aussi celles avec la **fiabilité** la plus faible (nombre de sujets touchés très restreint)
+        - Les sources/appareils avec le plus grand **CTR** sont aussi celles avec la **fiabilité** la plus basse (nombre de sujets touchés très restreint)
         
+        - Une meilleure performance CTR sur ces résultats moins représentés amènent à penser qu'ils touchent **LA BONNE CIBLE** : stratégie à développer
+
         """)
     
     with col2:
         st.markdown("""
-      
-        - Une meilleure **visibilité (impressions)** amène plus de **clics** mais ne fait pas augmenter le **CTR** 
-        
-        - Donc même en améliorant la position, il faut qu'elle touche **LA BONNE CIBLE** pour faire grimper le CTR
-
-        - **La tablette** illustre parfaitemet l'exemple d'une haute efficacité malgré un faible volume
                     
+        - **La tablette** illustre parfaitemet l'exemple d'une haute efficacité malgré une faible visibilité - continuer à optimiser l'expérience *mobile* pour le volume
+                    
+        - Considérer des stratégies spécifiques par appareil plutôt qu'une approche uniforme
+
         - Les **URL** montrent ici de meilleures performances générales, quand les données sont groupées selon les appareils
+                
+        - Travailler à améliorer les performances des sources KWD qui sont ici systématiquement inférieurs aux URL
+                    
+        - Tenter d'améliorer les positions, où les mots-clés (KWD) peuvent jouer un rôle crucial
+    
                     
         """)

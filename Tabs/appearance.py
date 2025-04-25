@@ -10,20 +10,10 @@ def show():
         ##### Apparence des résultats dans les pages de recherche et leur impact sur les performances SEO.        
         """)
     
-    col1, col2 = st.columns([5, 6])  # Ratio 5/5
+    col1, col2 = st.columns([6, 5])  # Ratio 5/6
     
     with col1:
-        st.markdown("""
-        ### Aperçu des données brutes
-                    
-        Les valeurs maximales de Clics, Impressions et CTR sont surlignées en jaune, et les meilleures positions (les plus basses) sont surlignées en vert.
 
-        Les données brutes indiquent des variations significatives de performance selon l'apparence des résultats.
-
-        On observe notamment que certains types d'apparence génèrent un CTR plus élevé même avec moins d'impressions, suggérant une meilleure pertinence perçue par les utilisateurs.           
-        """)
-    
-    with col2:
         try:
             # Charger les données
             df = pd.read_excel("Clean_data/Apparence_dans_les_résultats_de_recherche_all.xlsx")
@@ -55,6 +45,41 @@ def show():
             st.error(f"Erreur lors du chargement des données: {str(e)}")
             st.warning("Veuillez vérifier que le fichier 'Clean_data/Apparence_dans_les_résultats_de_recherche_all.xlsx' existe et est accessible.")
     
+       
+    with col2:
+        st.markdown("""
+        ### Aperçu des données brutes
+                    
+        Les valeurs maximales de Clics, Impressions et CTR sont surlignées en jaune, et les meilleures positions (les plus basses) sont surlignées en vert.
+
+        Les données brutes mettent en évidence que les clics et les impressions sont plus nombreux sur les **Extraits de produits** pour *Manufacturer URL*.
+
+        Cependant, le CTR et la position semblent bien meilleurs sur les **Extraits de produits** pour *Electric URL*, bien que la ***fiabilité*** (basée sur le nombre d'impressions) soit cette fois ***très faible***. En effet, pour une impression nous obtenons un clique, ce qui donne un CTR de 1 mais récolté sur un seul utilisateur.       
+        """)
+    
+       
+    # NOUVELLE SECTION: Distribution de l'apparence par source (texte à droite, image à gauche)
+    st.subheader("Distribution des Types d'Apparence par Source")
+    col1, col2 = st.columns([4, 5])  # Ratio 70/30
+    
+    with col1:
+         st.markdown("""
+        
+        Toutes les sources n'apparaissent pas à chaque fois avec tous les types d'apparences. 
+            
+        Pour que cela soit plus clair, le tableau ci-contre présente le type d'apparence disponible pour chaque source dans le jeu de données analysé.
+        
+        Nous voyons par exemple que toutes les sources apparaissent selon des **Extraits de produits**, les deux sources KWD se présentent également sous forme d'**Extraits d'avis**, et Electric URL est le seul a être trouvé selon des **Résultats traduits**.
+        
+        """)
+      
+    with col2:
+        try:
+            st.image("Assets/appearance_by_source.png", use_column_width=True)
+        except:
+            st.warning("Image 'Assets/appearance_by_source.png' non trouvée. Veuillez générer ce graphique.")
+    
+    
     # Graphique des impressions par apparence (image à gauche, texte à droite)
     st.subheader("Répartition des Impressions par Type d'Apparence")
     col1, col2 = st.columns([7, 3])  # Ratio 70/30 pour donner plus d'espace au graphique
@@ -66,25 +91,27 @@ def show():
             st.warning("Image 'Assets/appearance_impressions.png' non trouvée. Veuillez générer ce graphique.")
         
     with col2:
-        st.markdown("""
+         st.markdown("""
         
-        La majorité des impressions se fait pour l'apparence de type **Rich results**, qui représente:
+        C'est avec les **Extraits de produits** que se réalisent le plus d'impressions, avec : 
                     
-        **X%** des impressions totales
-        
-        Suivie par:
-        
-        **Featured snippet**:
+        **Manufacturer URL:**
                     
-        X% des impressions
+        75.69% des impressions
         
-        **Résultat standard**:
+        **Tesla KWD:**
                     
-        X% des impressions
+        23.16% des impressions
         
-        **Image**:
+        **Electric URL:**
                     
-        X% des impressions
+        0.04% des impressions
+                     
+        **Electric KWD:**
+                     
+        1.11% des impressions
+                     
+        Suivis d'assez loin par les **Extraits d'avis**, et en dernier lieu, les **Résultats traduits** qui n'apparaissent que peu.
         """)
     
     # Graphique des clics par apparence (texte à gauche, image à droite)
@@ -94,15 +121,23 @@ def show():
     with col1:
         st.markdown("""
         
-        La distribution des clics montre que **Rich results** génère également le plus de clics:
+        C'est également sur les **Extraits de produits** que s'effectuent le plus de clics, avec : 
                     
-        **X%** des clics totaux
-        
-        Cependant, **Featured snippet** présente une proportion plus importante de clics par rapport à ses impressions:
+        **Manufacturer URL:**
                     
-        **X%** des clics
+        89.40% des clics
                             
-        Cela suggère une meilleure efficacité des featured snippets pour attirer les utilisateurs.
+       **Tesla KWD:**
+                    
+        9.60% des clics
+        
+        **Electric URL:**
+                    
+        0.80% des clics
+        
+        **Electric KWD:**
+                    
+        0.20% des clics
         """)
     
     with col2:
@@ -124,11 +159,11 @@ def show():
     with col2:
         st.markdown("""
                        
-        L'analyse du CTR révèle que les **Featured snippets** offrent le meilleur taux de conversion, avec **X%**.
-        
-        Cela confirme leur efficacité supérieure à attirer les clics malgré un volume d'impressions plus faible.
-        
-        Les **Rich results** présentent un CTR de **X%**, ce qui est bon mais inférieur à celui des featured snippets.
+        Ici, nous obtenons on score incroyable de CTR à 100% pour les Extraits de produits d'*Electric URL*, mais rappelons que ces résultats ne sont pas fiables puisque obtenus sur une seule personne.
+                    
+        Idem pour le CTR issu des **Résultats traduits**, toujours pour *Electric URL*, de 8,82% obtenu sur de très petits scores (3 clics pour 34 impressions)
+
+        Le CTR le plus probants (le plus "haut" et fiable - 0,72%) est toutefois quand même obtenu avec les **Extraits de produits**, mais pour *manufacturer URL*. Il s'agit des meilleurs résultats utilisables (fiables), avec le plus haut taux d'impressions (61981) et de clics (447). 
         """)
     
     # Position et CTR par apparence (texte à gauche, image à droite)
@@ -138,20 +173,18 @@ def show():
     with col1:
         st.markdown("""
         
-        On observe une corrélation claire entre la **position moyenne** et le **CTR**:
+        Ici aussi, nous constations que le meilleur CTR (.0882) est obtenu avec la meilleure positions (10.62) pour les **Résultats traduits**, mais toujours avec une maigre fiabilité sur ces résultats.
         
-        Les types d'apparence positionnés en haut des résultats (position proche de 1) génèrent généralement un meilleur CTR.
-        
-        Les **Featured snippets** bénéficient d'une position moyenne de **X**, expliquant en partie leur excellent CTR.
-        
-        En revanche, les **Résultats standards** sont positionnés en moyenne à **X** et présentent un CTR plus faible de **X%**.
+        Ces observation laissent encore à penser qu'une meilleure ***position*** impliquerait un meilleur ***CTR***
+
+        Résultats les moins probants en terme de CTR et de position sont les **extraits d'avis**, avec globalement un taux d'impressions et de clics moyen.
         """)
     
     with col2:
         try:
-            st.image("Assets/appearance_position_ctr.png", use_column_width=True)
+            st.image("Assets/position_ctr_par_type_avec_fiabilite.png", use_column_width=True)
         except:
-            st.warning("Image 'Assets/appearance_position_ctr.png' non trouvée. Veuillez générer ce graphique.")
+            st.warning("Image 'Assets/position_ctr_par_type_avec_fiabilite.png' non trouvée. Veuillez générer ce graphique.")
     
     # Section de recommandations
     st.subheader("Résumé des observations")
@@ -159,25 +192,31 @@ def show():
     col1, col2 = st.columns(2)
     
     with col1:
+        
         st.markdown("""
-                         
-        - **Prioriser les featured snippets**: Ils génèrent le meilleur CTR et représentent une opportunité de visibilité même avec moins d'impressions
-        
-        - **Développer les rich results**: Ils combinent bon volume d'impressions et CTR satisfaisant
                     
-        - **Éviter de se contenter des résultats standards**: Leur faible CTR et position moyenne moins favorable les rendent moins efficaces
+        - À nouveau, **Si l'objectif est de créer de l'engagement**, il semble qu'*Electric URL* touche un public plus restreint mais ciblé, à travers les **Résultats Traduits** et Extraits de produits**, mais il serait utile de pouvoir observer cette tendance sur des données plus vastes et fiables.
+                         
+        - **Si l'objectif est de donner de la visibilité** : favoriser les sources telles que  pour *Manufacturer URL* en misant sur les *Extraits de produits*.
+                    
+        - Les sources/apparences avec le plus grand **CTR** sont encore une fois celles avec la **fiabilité** la plus basse (nombre de sujets touchés très restreint)
+                    
+        - À nouveau, unee meilleure performance CTR sur ces résultats moins représentés amènent à penser qu'ils touchent **LA BONNE CIBLE** : stratégie à développer
+
         
-        - **Intégrer des images**: Bien qu'ayant un volume limité, elles peuvent compléter efficacement la stratégie
         """)
     
     with col2:
         st.markdown("""
       
-        - **La position influence fortement le CTR**: L'optimisation pour des positions plus hautes reste essentielle
-        
-        - **L'apparence visuelle des résultats compte autant que la position**: Diversifier les types d'apparence permet de maximiser l'engagement
-        
-        - **Adapter le contenu aux formats préférentiels**: Structurer le contenu pour favoriser les featured snippets et rich results
+        - Continuer à privilégier les "Extraits de produits" sur "Manufacturer URL" pour le volume
                     
-        - **Analyser les tendances spécifiques par secteur**: Certains types d'apparence peuvent être plus efficaces pour les pneus électriques
+        - Explorer le potentiel des "Résultats traduits" sur "Electric URL" mais aussi d'autres sources pour améliorer l'engagement (tout en reconnaissant les limites de fiabilité)
+                    
+        - Travailler à améliorer les performances des sources KWD qui sont significativement en-dessous des benchmarks standards
+                    
+        - Tenter d'améliorer les positions, où les mots-clés (KWD) peuvent jouer un rôle crucial
+                    
+        - Analyser les raisons de la faible performance des "Extraits d'avis" malgré leur bonne visibilité
+                    
         """)
