@@ -129,6 +129,21 @@ def show():
 
     Ces variations mensuelles indiquent une ***saisonnalité claire*** avec un ***creux en février*** et une ***performance optimale en fin d'année***. La dynamique de *Tesla KWD* est particulièrement notable, montrant une amélioration progressive du CTR associée à des positions plus favorables en novembre et décembre.
     """)
+
+     # 📌 AJOUT DE LA MATRICE DES DATES
+    st.subheader("Synthèse visuelle des variations temporelles")
+
+    try:
+        col1, col2, col3 = st.columns([1, 8, 1])
+        with col2:
+            st.image("Assets/matrice_dates.png", use_column_width=True)
+    except:
+        st.warning("Image 'Assets/matrice_dates.png' non trouvée. Veuillez générer ce graphique.")
+    
+    st.markdown("""
+    ***Le volume et la performance ne vont pas toujours de pair***.
+    Les **clics** et **impressions** sont très fortement corrélés entre eux, ce qui est attendu (plus on est visible, plus on a de chances d’être cliqué). En revanche, le **CTR** (taux de clics) n’est pas corrélé à ces volumes — il dépend surtout de la **position** dans les résultats, avec une relation inverse : plus la position est haute (près de 1), plus le CTR augmente. Cela montre que la qualité de l’emplacement est plus déterminante que la quantité d’impressions pour générer un engagement efficace.
+    """)
     
     # Résumé et recommandations
     st.subheader("Résumé des observations")
