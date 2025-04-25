@@ -159,3 +159,11 @@ def global_analysis_tab():
     st.markdown('</div>', unsafe_allow_html=True)
     # Code de visualisation...
     st.markdown('</div>', unsafe_allow_html=True)
+
+def queries_tab():
+    """Contenu de l'onglet 'Appareils'"""
+    st.header("Analyse par Appareils")
+    
+    # Exemple
+    st.subheader("Répartition des recherches par type d'appareil")
+    # Intégration du code de visualisation...

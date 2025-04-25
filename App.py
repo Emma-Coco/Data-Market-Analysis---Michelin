@@ -3,7 +3,7 @@ from Utils.styles import set_page_style
 from Utils.header import display_header
 from Utils.footer import display_footer
 from Utils.lexicon import display_lexicon
-from Tabs import about, recommendations, devices, dates, appearance, global_analysis, filters, pages, countries, queries
+from Tabs import about, recommendations, devices, dates, appearance, general, filters, pages, countries, queries
 
 # Configuration de la page
 st.set_page_config(page_title="Michelin SEO Dashboard - Mexico", page_icon="🔍", layout="wide")
@@ -30,7 +30,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10 = st.tabs([
 with tab1:
     about.show()
 with tab2:
-    global_analysis.show()
+    general.show()
 with tab3:
     devices.show()
 with tab4:
