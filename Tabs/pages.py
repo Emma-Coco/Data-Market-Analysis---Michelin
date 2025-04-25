@@ -33,47 +33,28 @@ def show():
         )
     )
 
-
-    # Chargement des données
-
-    df = pd.read_excel("Clean_data/Pages_all.xlsx")
-    df = df[df['Source'] != 'Global']
-    df.rename(columns={"Pages_les_plus_populaires": "Page"}, inplace=True)
-
-    # Création de la colonne type de page
-    df['Type'] = df['Page'].apply(
-        lambda x: (
-            "Pages électriques (/auto)" if "/auto" in str(x) else "Autres pages"
-        )
-    )
-
-    # Création d'une version cliquable de l'URL
-    df['Page_cliquable'] = df['Page'].apply(
-        lambda x: f'<a href="{x}" target="_blank">{x}</a>'
-    )
-
     # Aperçu du top des pages
-    st.subheader("📄 Aperçu des Pages")
+    st.subheader(" Aperçu des Pages")
     col1, col2 = st.columns([5, 5])
 
     with col1:
         st.markdown(
             """
-            ### Données brutes stylisées avec liens
+        ### Données brutes stylisées
 
-            Cet aperçu montre les pages les plus performantes en termes de clics, d’impressions et de CTR.
+        Cet aperçu montre les pages les plus performantes en termes de clics, d’impressions et de CTR.
 
-            Les URLs sont maintenant **cliquables** pour un accès direct aux pages.
+        On distingue ici les pages électriques des autres types d’URL afin de voir si leur performance est homogène.
         """
         )
 
     with col2:
-        st.markdown(
-            df[['Page_cliquable', 'Clics', 'Impressions', 'CTR', 'Position']]
-            .sort_values("Clics", ascending=False)
-            .head(10)
-            .to_html(escape=False, index=False),
-            unsafe_allow_html=True,
+        st.dataframe(
+            df.style.highlight_max(
+                subset=['Clics', 'CTR'], axis=0, color='#FFD100'
+            )
+            .highlight_min(subset=['Position'], axis=0, color='#90EE90')
+            .format({'CTR': '{:.2%}', 'Position': '{:.2f}'})
         )
 
     # Agrégation des performances par type de page

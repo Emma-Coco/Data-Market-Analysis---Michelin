@@ -14,7 +14,6 @@ def show():
     - Electric URLs
     - Electric KWD (Keywords)
     - Tesla KWD (Keywords)
-    - Global
              
     **Catégories:**
     - Général : Résultats sur une large quantité de données issues du site général, et pas pas spécifiquement des sources ciblées citées ci-dessus
