@@ -84,12 +84,12 @@ def show():
     Dans ce cadre, ***il est difficile de voir un quelconque lien entre l'impact de la position sur le CTR***. Elles suggèrent une relation ***complexe et peut-être inverse*** entre les pics de performance CTR et l'évolution ultérieure des positions. Il serait donc imprudent de formuler des observations et de créer des loiens concrets en utilisant la **position** afin de prédire les **variations** d'autres KPI.
     """)
 
-    # Analyse hebdomadaire
+    # Analyse hebdomadaire - Réduire la taille de l'image
     st.subheader("Analyse des performances par jour de la semaine")
 
-    # Image des performances hebdomadaires  
+    # Image des performances hebdomadaires avec taille réduite 
     try:
-        col1, col2, col3 = st.columns([1, 8, 1])
+        col1, col2, col3 = st.columns([2, 7, 2])  # Ratio modifié pour une image plus petite
         with col2:
             st.image("Assets/tendances_jour_semaine.png", use_column_width=True)
     except:
@@ -104,73 +104,63 @@ def show():
     - Le **CTR** est généralement plus élevé en début de semaine (lundi et mardi) et plus faible le dimanche
     - Les **positions** restent relativement constantes, avec une légère amélioration le lundi
 
-    Ces données suggèrent que les ***jours ouvrables***, particulièrement le début de semaine, pourraient être plus propices à l'engagement des utilisateurs, tandis que le week-end génère potentiellement plus d'impressions mais avec un taux de conversion plus faible.
+    Ces données suggèrent que les jours ouvrables, particulièrement **le début de semaine**, pourraient être plus propices à l'***engagement des utilisateurs***, tandis que le **week-end** génère potentiellement plus d'***impressions*** mais avec un taux de conversion plus faible. Le comportement d'exposition (impressions) reste constant, mais l'engagement (clics et CTR) varie davantage.
     """)
     
-    # Analyse détaillée par période
-    st.subheader("Analyse par Période")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("""
-        ### Période à fort trafic
-        
-        Analyse des périodes où le trafic a été particulièrement élevé :
-        
-        - Quels mois/semaines ont généré le plus d'impressions et de clics
-        - Facteurs potentiellement contributifs
-        - Performances relatives (CTR) pendant ces périodes
-        """)
-    
-    with col2:
-        st.markdown("""
-        ### Tendances de positionnement
-        
-        Analyse de l'évolution des positions moyennes :
-        
-        - Tendance générale (amélioration ou détérioration)
-        - Corrélation entre position et autres métriques
-        - Périodes de changements significatifs
-        """)
-    
-    # Comparaison saisonnière
-    st.subheader("Comparaison Saisonnière")
-    
+   # Comparaison saisonnière mensuelle
+    st.subheader("Comparaison Mensuelle par Source")
+
+    # Image de la comparaison mensuelle
     try:
-        st.image("Assets/comparaison_saisonniere.png", use_column_width=True)  # Image hypothétique
+        col1, col2, col3 = st.columns([1, 8, 1])
+        with col2:
+            st.image("Assets/comparaison_mensuelle.png", use_column_width=True)
     except:
-        st.markdown("Graphique de comparaison saisonnière non disponible")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("""
-        ### Performances hebdomadaires
-        
-        - Analyse des performances selon les jours de la semaine
-        - Identification des jours les plus performants
-        - Recommandations basées sur ces tendances
-        """)
-    
-    with col2:
-        st.markdown("""
-        ### Impact des mises à jour
-        
-        - Identification des changements suite aux mises à jour majeures
-        - Analyse des impacts positifs ou négatifs
-        - Recommandations d'ajustements stratégiques
-        """)
+        st.warning("Image 'Assets/comparaison_mensuelle.png' non trouvée. Veuillez générer ce graphique.")
+
+    # Espace texte sous l'image
+    st.markdown("""
+    La répartition mensuelle des performances révèle des tendances saisonnières marquées :
+
+    - **Clics** : *Manufacturer URL* montre une forte baisse en février, suivie d'une remontée significative en novembre et décembre
+    - **CTR** : *Tesla KWD* présente une amélioration constante depuis février, atteignant son pic en décembre (2.7%)
+    - **Positions** : Détérioration générale des positions en novembre pour toutes les sources sauf *Tesla KWD* qui s'améliore remarquablement
+    - **Impressions** : Tendance similaire aux clics avec un creux en février et une reprise en fin d'année
+
+    Ces variations mensuelles indiquent une ***saisonnalité claire*** avec un ***creux en février*** et une ***performance optimale en fin d'année***. La dynamique de *Tesla KWD* est particulièrement notable, montrant une amélioration progressive du CTR associée à des positions plus favorables en novembre et décembre.
+    """)
     
     # Résumé et recommandations
     st.subheader("Résumé des observations")
-    
-    st.markdown("""
-    Synthèse des principales observations temporelles et recommandations :
-    
-    - Points clés identifiés dans l'analyse temporelle
-    - Opportunités de croissance basées sur les tendances historiques
-    - Recommandations stratégiques pour optimiser les performances futures
-    """)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("#### Points clés à retenir :")
+        st.markdown("""
+        1. **Domination de Manufacturer URL** en volume (×10) avec un CTR modéré, tandis que **Tesla KWD** offre le meilleur CTR et les meilleures positions
+
+        2. **Electric KWD** montre un potentiel inexploité avec des pics exceptionnels de CTR (jusqu'à 9%) mais une grande instabilité
+
+        3. **Saisonnalité marquée** : performance optimale en fin d'année (nov-déc) et creux en février
+
+        4. **Engagement plus fort en début de semaine**, impressions plus élevées le week-end
+
+        5. **Relation complexe entre position et CTR**, suggérant l'influence d'autres facteurs dans la performance
+        """)
+
+    with col2:
+        st.markdown("#### Recommandations principales :")
+        st.markdown("""
+        1. **Stratégie différenciée** : optimiser Manufacturer URL pour le volume, Tesla KWD pour la conversion, et stabiliser Electric KWD
+
+        2. **Planification saisonnière** : concentrer les efforts sur nov-déc et utiliser février pour tester de nouvelles approches
+
+        3. **Programmation hebdomadaire optimisée** : contenus importants en début de semaine et adaptation du contenu weekend
+
+        4. **Approche équilibrée** : ne pas se focaliser uniquement sur les positions mais travailler aussi sur la pertinence du contenu
+
+        5. **Analyse des pics de performance** pour reproduire les conditions des meilleurs résultats observés
+        """)
 
 show()
