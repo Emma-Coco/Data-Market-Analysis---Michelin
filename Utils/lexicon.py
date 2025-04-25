@@ -50,8 +50,15 @@ def display_lexicon():
                     <th>Définition</th>
                 </tr>
                 <tr>
-                    <td><strong>CTR</strong></td>
-                    <td>Click-Through Rate (Taux de Clics) - Pourcentage de personnes qui cliquent sur un résultat après l'avoir vu dans les résultats de recherche. Formule : Clics ÷ Impressions</td>
+                     <td><strong>CTR</strong></td>
+                     <td>
+                        Click-Through Rate (Taux de Clics) – Pourcentage de personnes qui cliquent sur un résultat après l'avoir vu dans les résultats de recherche. Formule : Clics ÷ Impressions.
+                        <ul>
+                        <li>La moyenne globale se situe généralement entre 1% et 2%</li>
+                        <li>Pour les positions en première page : 2-5% est considéré comme bon</li>
+                        <li>Pour les premières positions (1-3) : 5-10% est considéré comme bon à excellent</li>
+                        </ul>
+                    </td>
                 </tr>
                 <tr>
                     <td><strong>Position</strong></td>
